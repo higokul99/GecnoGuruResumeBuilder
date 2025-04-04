@@ -3,7 +3,11 @@
 include 'dbconnect.php';
 
 // Start session
-session_start();
+if (!isset($_SESSION)) {
+    if (!isset($_SESSION)) {
+    session_start();
+}
+}
 
 // Set default user email (you might want to replace this with actual session management)
 $user_email = 'neraj@gmail.com';

@@ -7,17 +7,16 @@ include ('controller.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - GecnoGuru</title>
+    <title>Forgot Password - GecnoGuru</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        
         body {
             background-color: #2563eb;
             font-family: Arial, sans-serif;
-            padding-top: 60px; /* For fixed navbar */
+            padding-top: 60px;
         }
         
-        .login-container {
+        .container {
             max-width: 400px;
             margin: 50px auto;
             padding: 30px;
@@ -43,8 +42,7 @@ include ('controller.php');
             font-weight: bold;
         }
         
-        input[type="email"],
-        input[type="password"] {
+        input[type="email"] {
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
@@ -84,6 +82,15 @@ include ('controller.php');
             text-align: center;
         }
         
+        .success {
+            color: #388e3c;
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
         .footer-links {
             text-align: center;
             margin-top: 20px;
@@ -98,24 +105,14 @@ include ('controller.php');
         .footer-links a:hover {
             text-decoration: underline;
         }
-
-        .success {
-            color: #388e3c;
-            background-color: #e8f5e9;
-            padding: 10px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
     <?php include ('navbar.php'); ?>
     
-    <div class="login-container">
-        <h2>Sign in to your account</h2>
-            
-        <!-- Add error message display at the top of the form -->
+    <div class="container">
+        <h2>Reset Your Password</h2>
+        
         <?php if (isset($_SESSION['error'])): ?>
             <div class="error">
                 <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
@@ -129,24 +126,18 @@ include ('controller.php');
         <?php endif; ?>
 
         <form method="POST" action="controller.php">
-            <input type="hidden" name="action" value="login">
+            <input type="hidden" name="action" value="forgot_password">
             
             <div class="form-group">
-                <label for="email">Email address</label>
+                <label for="email">Enter Your Email Address</label>
                 <input type="email" id="email" name="email" required autofocus>
             </div>
             
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            
-            <button type="submit" class="btn">Sign in</button>
+            <button type="submit" class="btn">Submit</button>
         </form>
         
         <div class="footer-links">
-            <!-- <a href="forgot_password.php">Forgot password?</a> |  -->
-            <a href="register.php">Create account</a>
+            <a href="login.php">Back to Login</a>
         </div>
     </div>
 </body>

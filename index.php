@@ -1042,7 +1042,7 @@
                     <a href="login.php" class="btn btn-primary">Get Started for Free</a>
                     <a href="login.php" class="btn btn-secondary">View Templates</a>
                 </div>
-                <div class="hero-badges">
+                <!-- <div class="hero-badges">
                     <div class="hero-badge">
                         <i class="fas fa-users"></i>
                         <span>50,000+ Users</span>
@@ -1051,7 +1051,7 @@
                         <i class="fas fa-star"></i>
                         <span>4.9/5 Rating</span>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="hero-image">
                 <img src="Images/1.avif" alt="Resume Forge Platform Preview">
@@ -1082,7 +1082,7 @@
                     </div>
                     <h3>Cover Letter Builder</h3>
                     <p>Craft compelling cover letters that complement your resume and demonstrate your value to potential employers.</p>
-                    <a href="login.php" class="service-link">Write Cover Letter <i class="fas fa-arrow-right"></i></a>
+                    <a href="cover-letter-builder.php" class="service-link">Write Cover Letter <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
                 <div class="service-card">
@@ -1091,26 +1091,26 @@
                     </div>
                     <h3>Portfolio Website</h3>
                     <p>Showcase your work with a personalized portfolio website. Perfect for creative professionals and freelancers.</p>
-                    <a href="login.php" class="service-link">Build Portfolio <i class="fas fa-arrow-right"></i></a>
+                    <a href="portfolio-website.php" class="service-link">Build Portfolio <i class="fas fa-arrow-right"></i></a>
                 </div>
                 
-                <div class="service-card">
+                <!-- <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-comments"></i>
                     </div>
                     <h3>Interview Preparation</h3>
                     <p>Practice with AI-powered interview simulations and get real-time feedback to improve your interview skills.</p>
                     <a href="login.php" class="service-link">Prepare for Interviews <i class="fas fa-arrow-right"></i></a>
-                </div>
+                </div> -->
 
-                <div class="service-card">
+                <!-- <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-briefcase"></i>
                     </div>
                     <h3>Job Portal</h3>
                     <p>Discover and apply for relevant job openings. Leverage AI-powered tools to enhance your application and interview readiness.</p>
                     <a href="login.php" class="service-link">Apply for Job <i class="fas fa-arrow-right"></i></a>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -1166,7 +1166,7 @@
     </section>
     
     <!-- Statistics Section -->
-    <section class="stats-section">
+    <!-- <section class="stats-section">
         <div class="stats-container">
             <div class="stat-box">
                 <div class="stat-number">50,000+</div>
@@ -1185,246 +1185,9 @@
                 <div class="stat-label">Average Rating</div>
             </div>
         </div>
-    </section>
+    </section> -->
     
-    <!-- Pricing Section -->
-    <section class="pricing-section">
-        <div class="container">
-            <div class="section-heading">
-                <h2>Individual Service Pricing</h2>
-                <p>One-time payment for each service. No hidden fees.</p>
-            </div>
-            
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="pricing-title">Resume Building & Optimization</h3>
-                        <p class="pricing-subtitle">ATS-friendly professional resume</p>
-                        <p class="pricing-price"><span class="price-range">₹999 – ₹2,499</span></p>
-                    </div>
-                    <div class="pricing-features">
-                        <ul class="feature-list">
-                            <li class="feature-item"><i class="fas fa-check"></i> Professional template selection</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> ATS optimization</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Industry-specific keywords</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Achievement-focused content</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Multiple formats (PDF, DOCX)</li>
-                        </ul>
-                    </div>
-                    <div class="pricing-footer">
-                        <a href="login.php" class="pricing-btn">Get Started</a>
-                    </div>
-                </div>
-                
-                <div class="pricing-card most-popular">
-                    <span class="featured-tag">Most Popular</span>
-                    <div class="pricing-header">
-                        <h3 class="pricing-title">LinkedIn Profile Optimization</h3>
-                        <p class="pricing-subtitle">Stand out to recruiters</p>
-                        <p class="pricing-price"><span class="price-range">₹1,999 – ₹4,999</span></p>
-                    </div>
-                    <div class="pricing-features">
-                        <ul class="feature-list">
-                            <li class="feature-item"><i class="fas fa-check"></i> Profile headline optimization</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Keyword-rich summary</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Experience section enhancement</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Skill endorsement strategy</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Profile photo consultation</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Banner design recommendations</li>
-                        </ul>
-                    </div>
-                    <div class="pricing-footer">
-                        <a href="login.php" class="pricing-btn">Get Started</a>
-                    </div>
-                </div>
-                
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="pricing-title">Cover Letter Writing</h3>
-                        <p class="pricing-subtitle">Compelling introductions</p>
-                        <p class="pricing-price"><span class="price-range">₹799 – ₹1,499</span></p>
-                    </div>
-                    <div class="pricing-features">
-                        <ul class="feature-list">
-                            <li class="feature-item"><i class="fas fa-check"></i> Tailored to specific job</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Compelling introduction</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Skill-to-job matching</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Professional formatting</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Multiple revisions</li>
-                        </ul>
-                    </div>
-                    <div class="pricing-footer">
-                        <a href="login.php" class="pricing-btn">Get Started</a>
-                    </div>
-                </div>
-                    
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="pricing-title">ATS Resume Review & Fixing</h3>
-                        <p class="pricing-subtitle">Beat the screening software</p>
-                        <p class="pricing-price"><span class="price-range">₹1,499</span></p>
-                    </div>
-                    <div class="pricing-features">
-                        <ul class="feature-list">
-                            <li class="feature-item"><i class="fas fa-check"></i> ATS compatibility test</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Format optimization</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Keyword analysis</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Section restructuring</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Final ATS passing score</li>
-                        </ul>
-                    </div>
-                    <div class="pricing-footer">
-                        <a href="login.php" class="pricing-btn">Get Started</a>
-                    </div>
-                </div>
-                
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="pricing-title">Naukri & Indeed Profile Setup</h3>
-                        <p class="pricing-subtitle">Maximized job portal visibility</p>
-                        <p class="pricing-price"><span class="price-range">₹999 – ₹2,999</span></p>
-                    </div>
-                    <div class="pricing-features">
-                        <ul class="feature-list">
-                            <li class="feature-item"><i class="fas fa-check"></i> Profile headline optimization</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Searchable resume setup</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Job preferences configuration</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Skills & keywords optimization</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Job alerts setup</li>
-                        </ul>
-                    </div>
-                    <div class="pricing-footer">
-                        <a href="login.php" class="pricing-btn">Get Started</a>
-                    </div>
-                </div>
-                
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="pricing-title">Portfolio Website Setup (Basic)</h3>
-                        <p class="pricing-subtitle">Showcase your work online</p>
-                        <p class="pricing-price"><span class="price-range">₹3,999 – ₹7,999</span></p>
-                    </div>
-                    <div class="pricing-features">
-                        <ul class="feature-list">
-                            <li class="feature-item"><i class="fas fa-check"></i> Professional template selection</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Up to 5 portfolio projects</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> About & services pages</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Contact form integration</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Social media links</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Mobile responsiveness</li>
-                        </ul>
-                    </div>
-                    <div class="pricing-footer">
-                        <a href="login.php" class="pricing-btn">Get Started</a>
-                    </div>
-                </div>
-                
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="pricing-title">Portfolio Website (Custom)</h3>
-                        <p class="pricing-subtitle">Fully customized web presence</p>
-                        <p class="pricing-price"><span class="price-range">₹9,999+</span></p>
-                    </div>
-                    <div class="pricing-features">
-                        <ul class="feature-list">
-                            <li class="feature-item"><i class="fas fa-check"></i> Custom design & development</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Unlimited portfolio projects</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Custom domain setup</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> SEO optimization</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Analytics integration</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Content management system</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> 1 month of technical support</li>
-                        </ul>
-                    </div>
-                    <div class="pricing-footer">
-                        <a href="login.php" class="pricing-btn">Get Started</a>
-                    </div>
-                </div>
-                
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="pricing-title">GitHub Profile Setup & Optimization</h3>
-                        <p class="pricing-subtitle">Showcase your coding journey</p>
-                        <p class="pricing-price"><span class="price-range">₹999 – ₹3,999</span></p>
-                    </div>
-                    <div class="pricing-features">
-                        <ul class="feature-list">
-                            <li class="feature-item"><i class="fas fa-check"></i> Profile README design</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Repository organization</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Project documentation</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> GitHub stats integration</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Contribution graph enhancement</li>
-                        </ul>
-                    </div>
-                    <div class="pricing-footer">
-                        <a href="login.php" class="pricing-btn">Get Started</a>
-                    </div>
-                </div>
-                
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="pricing-title">LinkedIn Networking & Referrals Guide</h3>
-                        <p class="pricing-subtitle">Strategic connections</p>
-                        <p class="pricing-price"><span class="price-range">₹1,999</span></p>
-                    </div>
-                    <div class="pricing-features">
-                        <ul class="feature-list">
-                            <li class="feature-item"><i class="fas fa-check"></i> Personalized networking strategy</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Targeted connection requests</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Message templates</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Referral request approach</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Engagement strategy</li>
-                        </ul>
-                    </div>
-                    <div class="pricing-footer">
-                        <a href="login.php" class="pricing-btn">Get Started</a>
-                    </div>
-                </div>
-                
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="pricing-title">Mock Interview (HR + Technical)</h3>
-                        <p class="pricing-subtitle">Practice makes perfect</p>
-                        <p class="pricing-price"><span class="price-range">₹2,499 – ₹4,999</span></p>
-                    </div>
-                    <div class="pricing-features">
-                        <ul class="feature-list">
-                            <li class="feature-item"><i class="fas fa-check"></i> Industry-specific questions</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Role-tailored scenarios</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Real-time feedback</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Body language assessment</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Recorded session</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Follow-up improvement plan</li>
-                        </ul>
-                    </div>
-                    <div class="pricing-footer">
-                        <a href="login.php" class="pricing-btn">Get Started</a>
-                    </div>
-                </div>
-                
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3 class="pricing-title">System Design Interview Coaching</h3>
-                        <p class="pricing-subtitle">For senior tech roles</p>
-                        <p class="pricing-price"><span class="price-range">₹4,999 – ₹7,999</span></p>
-                    </div>
-                    <div class="pricing-features">
-                        <ul class="feature-list">
-                            <li class="feature-item"><i class="fas fa-check"></i> Practice system design interviews</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Architecture best practices</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Scalability principles</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Whiteboarding techniques</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Common pitfalls review</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Company-specific preparation</li>
-                        </ul>
-                    </div>
-                    <div class="pricing-footer">
-                        <a href="login.php" class="pricing-btn">Get Started</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
     
     <!-- CTA Section -->
     <section class="cta-section">
