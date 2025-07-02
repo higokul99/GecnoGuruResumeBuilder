@@ -1,5 +1,7 @@
 <?php
-session_start(); // Add this at the top of the file
+if (!isset($_SESSION)) {
+    session_start();
+} // Add this at the top of the file
 include 'navbar.php';
 
 // Ensure user is logged in

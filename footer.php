@@ -16,20 +16,20 @@
             <h3>Our Services</h3>
             <ul class="footer-links">
                 <li><a href="Resume/index.php">Resume Builder</a></li>
-                <li><a href="#.php">Cover Letter Builder</a></li>
-                <li><a href="#.php">Portfolio Website Builder</a></li>
-                <li><a href="#.php">Interview Preparation</a></li>
-                <li><a href="#.php">Job Portal</a></li>
+                <li><a href="cover-letter-builder.php">Cover Letter Builder</a></li>
+                <li><a href="portfolio-website.php">Portfolio Website Builder</a></li>
+                <!-- <li><a href="#.php">Interview Preparation</a></li>
+                <li><a href="#.php">Job Portal</a></li> -->
             </ul>
         </div>
         
         <div class="footer-column">
             <h3>Quick Links</h3>
             <ul class="footer-links">
-                <li><a href="#">About Us</a></li>
+                <li><a href="about-us.php">About Us</a></li>
                 <li><a href="refund-policy.html">Refund Policy</a></li>
-                <li><a href="#">FAQ</a></li>
-                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="faq.php">FAQ</a></li>
+                <li><a href="privacy-policy.php">Privacy Policy</a></li>
                 <li><a href="terms-and-conditions.html">Terms of Service</a></li>
             </ul>
         </div>

@@ -3,7 +3,9 @@ include 'navbar.php';
 include 'controller.php';
 
 // Ensure user is logged in
-// session_start();
+ if (!isset($_SESSION)) {
+    session_start();
+}
 if (!isset($_SESSION['email'])) {
     header("Location: personal.php");
     exit();

@@ -2,7 +2,11 @@
 <?php
 include('dbconnect.php');
 
-session_start();
+if (!isset($_SESSION)) {
+    if (!isset($_SESSION)) {
+    session_start();
+}
+}
 
 function sanitizeInput($data) {
     global $conn;
@@ -103,6 +107,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: login.php");
             exit();
         }
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['action']) && $_POST['action'] === 'forgot_password') {
+        $email = trim($_POST['email']);
+
+        // Check if email exists
+        $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $stmt->store_result();
+
+        if ($stmt->num_rows > 0) {
+            // Generate token
+            $token = bin2hex(random_bytes(50));
+            $expiry = date("Y-m-d H:i:s", strtotime("+1 hour"));
+            
+            // Store token in the database
+            $stmt = $conn->prepare("UPDATE users SET reset_token = ?, reset_expiry = ? WHERE email = ?");
+            $stmt->bind_param("sss", $token, $expiry, $email);
+            $stmt->execute();
+
+            // Send reset email
+            $resetLink = "http://yourwebsite.com/reset_password.php?token=$token";
+            $subject = "Password Reset Request";
+            $message = "Click the link below to reset your password: \n$resetLink \nThis link will expire in 1 hour.";
+            $headers = "From: noreply@yourwebsite.com";
+            
+            if (mail($email, $subject, $message, $headers)) {
+                $_SESSION['success'] = "A password reset link has been sent to your email.";
+            } else {
+                $_SESSION['error'] = "Failed to send email. Please try again later.";
+            }
+        } else {
+            $_SESSION['error'] = "No account found with this email.";
+        }
+        header("Location: forgot_password.php");
+        exit();
     }
 }
 
