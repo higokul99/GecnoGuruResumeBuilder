@@ -26,10 +26,10 @@
         <div class="footer-column">
             <h3>Quick Links</h3>
             <ul class="footer-links">
-                <!-- <li><a href="#">About Us</a></li> -->
+                <li><a href="about-us.php">About Us</a></li>
                 <li><a href="refund-policy.html">Refund Policy</a></li>
-                <!-- <li><a href="#">FAQ</a></li> -->
-                <!-- <li><a href="#">Privacy Policy</a></li> -->
+                <li><a href="faq.php">FAQ</a></li>
+                <li><a href="privacy-policy.php">Privacy Policy</a></li>
                 <li><a href="terms-and-conditions.html">Terms of Service</a></li>
             </ul>
         </div>
