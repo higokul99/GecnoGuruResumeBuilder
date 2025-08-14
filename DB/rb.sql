@@ -1,19 +1,21 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.0.1
--- http://www.phpmyadmin.net
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 30, 2025 at 01:43 PM
--- Server version: 5.1.36
--- PHP Version: 5.3.0
+-- Host: 127.0.0.1:3306
+-- Generation Time: Aug 14, 2025 at 05:06 AM
+-- Server version: 9.1.0
+-- PHP Version: 8.3.14
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `resume_builder`
@@ -25,25 +27,26 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- Table structure for table `education_details`
 --
 
+DROP TABLE IF EXISTS `education_details`;
 CREATE TABLE IF NOT EXISTS `education_details` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `user` varchar(50) NOT NULL,
   `qualification` varchar(100) NOT NULL,
   `institute` varchar(255) NOT NULL,
-  `year_of_passout` year(4) NOT NULL,
+  `year_of_passout` year NOT NULL,
   `percentage` decimal(5,2) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `education_details`
 --
 
 INSERT INTO `education_details` (`id`, `user`, `qualification`, `institute`, `year_of_passout`, `percentage`, `created_at`) VALUES
-(7, 'nerajnerajlal@gmail.com', 'Master''s', 'Snit', 2024, '78.00', '2025-03-28 11:51:12'),
-(6, 'aparnavravi@gmail.com', 'Bachelor''s', 'IIT', 2023, '6.92', '2025-03-27 13:01:17'),
-(8, 'syam@gmail.com', 'Master''s', 'Snit', 2024, '85.00', '2025-03-30 17:59:35');
+(7, 'nerajnerajlal@gmail.com', 'Master\'s', 'Snit', '2024', 78.00, '2025-03-28 06:21:12'),
+(6, 'aparnavravi@gmail.com', 'Bachelor\'s', 'IIT', '2023', 6.92, '2025-03-27 07:31:17'),
+(8, 'syam@gmail.com', 'Master\'s', 'Snit', '2024', 85.00, '2025-03-30 12:29:35');
 
 -- --------------------------------------------------------
 
@@ -51,8 +54,9 @@ INSERT INTO `education_details` (`id`, `user`, `qualification`, `institute`, `ye
 -- Table structure for table `experience_details`
 --
 
+DROP TABLE IF EXISTS `experience_details`;
 CREATE TABLE IF NOT EXISTS `experience_details` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `user` varchar(100) NOT NULL,
   `company_name` varchar(255) NOT NULL,
   `job_title` varchar(255) NOT NULL,
@@ -63,16 +67,16 @@ CREATE TABLE IF NOT EXISTS `experience_details` (
   `location` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `experience_details`
 --
 
 INSERT INTO `experience_details` (`id`, `user`, `company_name`, `job_title`, `start_date`, `end_date`, `is_current`, `job_description`, `location`, `created_at`) VALUES
-(4, 'nerajnerajlal@gmail.com', 'Serve Techno Research', 'Web Developer', '2022-09-25', '2024-09-25', 0, 'web developer who worked with web applications', 'Kollam', '2025-03-28 11:51:45'),
-(3, 'aparnavravi@gmail.com', 'qspider', 'java developer', '2024-07-21', NULL, 0, 'java developer', 'kochi', '2025-03-27 13:02:15'),
-(5, 'syam@gmail.com', 'Serve Techno Research', 'Web Developer', '2024-03-25', '2025-03-25', 0, 'dfsdfsd sdf sd  dsf', 'Kollam', '2025-03-30 18:00:00');
+(4, 'nerajnerajlal@gmail.com', 'Serve Techno Research', 'Web Developer', '2022-09-25', '2024-09-25', 0, 'web developer who worked with web applications', 'Kollam', '2025-03-28 06:21:45'),
+(3, 'aparnavravi@gmail.com', 'qspider', 'java developer', '2024-07-21', NULL, 0, 'java developer', 'kochi', '2025-03-27 07:32:15'),
+(5, 'syam@gmail.com', 'Serve Techno Research', 'Web Developer', '2024-03-25', '2025-03-25', 0, 'dfsdfsd sdf sd  dsf', 'Kollam', '2025-03-30 12:30:00');
 
 -- --------------------------------------------------------
 
@@ -80,13 +84,14 @@ INSERT INTO `experience_details` (`id`, `user`, `company_name`, `job_title`, `st
 -- Table structure for table `hobbies_details`
 --
 
+DROP TABLE IF EXISTS `hobbies_details`;
 CREATE TABLE IF NOT EXISTS `hobbies_details` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `user` varchar(255) NOT NULL,
   `hobby` varchar(255) NOT NULL,
   `hobby_description` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `hobbies_details`
@@ -103,8 +108,9 @@ INSERT INTO `hobbies_details` (`id`, `user`, `hobby`, `hobby_description`) VALUE
 -- Table structure for table `personal_details`
 --
 
+DROP TABLE IF EXISTS `personal_details`;
 CREATE TABLE IF NOT EXISTS `personal_details` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `user` varchar(50) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -117,16 +123,16 @@ CREATE TABLE IF NOT EXISTS `personal_details` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `personal_details`
 --
 
 INSERT INTO `personal_details` (`id`, `user`, `name`, `email`, `phone`, `address`, `github`, `linkedin`, `job_role`, `description`, `created_at`) VALUES
-(6, 'neraj@gmail.com', 'Aparna', 'aparnavravi@gmail.com', '9400281755', 'Arakkal tharavadu,nadhapuram,kannur', 'https://github.com/aparn4_v', 'https://linked.in/aparna', 'Java Developer', 'curently looking for java developer role,AS i was a btech graduate having 6 months of experience in java developing field.', '2025-03-27 13:00:49'),
-(7, 'neraj@gmail.com', 'Neraj Lal S', 'nerajnerajlal@gmail.com', '08547470675', 'lal bhavan Mukkoodu p.o Mulavana', 'https://github.com/nerajlal', 'https://linked.in/nerajlal', 'Java Developer', 'Passionate java developer who have made the shills from online sources and documents', '2025-03-28 11:50:55'),
-(8, 'neraj@gmail.com', 'Syam Lal', 'syam@gmail.com', '08547470675', 'lal bhavan Mukkoodu p.o Mulavana', 'https://github.com/nerajlal', 'https://linked.in/nerajlal', 'Java Developer', 'bw ck w cjk wc ewj cw', '2025-03-30 17:59:21');
+(6, 'neraj@gmail.com', 'Aparna', 'aparnavravi@gmail.com', '9400281755', 'Arakkal tharavadu,nadhapuram,kannur', 'https://github.com/aparn4_v', 'https://linked.in/aparna', 'Java Developer', 'curently looking for java developer role,AS i was a btech graduate having 6 months of experience in java developing field.', '2025-03-27 07:30:49'),
+(7, 'neraj@gmail.com', 'Neraj Lal S', 'nerajnerajlal@gmail.com', '08547470675', 'lal bhavan Mukkoodu p.o Mulavana', 'https://github.com/nerajlal', 'https://linked.in/nerajlal', 'Java Developer', 'Passionate java developer who have made the shills from online sources and documents', '2025-03-28 06:20:55'),
+(8, 'neraj@gmail.com', 'Syam Lal', 'syam@gmail.com', '08547470675', 'lal bhavan Mukkoodu p.o Mulavana', 'https://github.com/nerajlal', 'https://linked.in/nerajlal', 'Java Developer', 'bw ck w cjk wc ewj cw', '2025-03-30 12:29:21');
 
 -- --------------------------------------------------------
 
@@ -134,8 +140,9 @@ INSERT INTO `personal_details` (`id`, `user`, `name`, `email`, `phone`, `address
 -- Table structure for table `projects_details`
 --
 
+DROP TABLE IF EXISTS `projects_details`;
 CREATE TABLE IF NOT EXISTS `projects_details` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `user` varchar(255) NOT NULL,
   `project_name` varchar(255) NOT NULL,
   `project_description` text NOT NULL,
@@ -144,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `projects_details` (
   `start_date` date DEFAULT NULL,
   `end_date` date DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `projects_details`
@@ -161,21 +168,24 @@ INSERT INTO `projects_details` (`id`, `user`, `project_name`, `project_descripti
 -- Table structure for table `users`
 --
 
+DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `email` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `created_at`) VALUES
-(1, 'neraj@gmail.com', 'Neraj123@', '2025-03-30 16:03:26');
+(1, 'neraj@gmail.com', 'Neraj123@', '2025-03-30 10:33:26'),
+(2, 'gokul@gmail.com', 'Gokul@123', '2025-03-31 09:05:53'),
+(3, '00000@g.c', 'aaaaaa', '2025-04-03 16:35:04');
 
 -- --------------------------------------------------------
 
@@ -183,8 +193,9 @@ INSERT INTO `users` (`id`, `email`, `password`, `created_at`) VALUES
 -- Table structure for table `user_achievements`
 --
 
+DROP TABLE IF EXISTS `user_achievements`;
 CREATE TABLE IF NOT EXISTS `user_achievements` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `user` varchar(255) NOT NULL,
   `achievement` varchar(255) NOT NULL,
   `organization` varchar(255) DEFAULT NULL,
@@ -193,14 +204,14 @@ CREATE TABLE IF NOT EXISTS `user_achievements` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `user` (`user`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_achievements`
 --
 
 INSERT INTO `user_achievements` (`id`, `user`, `achievement`, `organization`, `achievement_date`, `achievement_description`, `created_at`) VALUES
-(1, 'nerajnerajlal@gmail.com', 'IEDC Community Leadd', 'SNIT', '2024-02-29', 'IEDC Community Lead', '2025-03-30 08:58:07');
+(1, 'nerajnerajlal@gmail.com', 'IEDC Community Leadd', 'SNIT', '2024-02-29', 'IEDC Community Lead', '2025-03-30 03:28:07');
 
 -- --------------------------------------------------------
 
@@ -208,8 +219,9 @@ INSERT INTO `user_achievements` (`id`, `user`, `achievement`, `organization`, `a
 -- Table structure for table `user_skills`
 --
 
+DROP TABLE IF EXISTS `user_skills`;
 CREATE TABLE IF NOT EXISTS `user_skills` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int NOT NULL AUTO_INCREMENT,
   `user` varchar(255) NOT NULL,
   `skill` varchar(255) NOT NULL,
   `proficiency` varchar(50) NOT NULL,
@@ -217,12 +229,17 @@ CREATE TABLE IF NOT EXISTS `user_skills` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `user` (`user`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user_skills`
 --
 
 INSERT INTO `user_skills` (`id`, `user`, `skill`, `proficiency`, `skill_description`, `created_at`) VALUES
-(1, 'nerajnerajlal@gmail.com', 'Java', 'Advanced', 'java full stack', '2025-03-28 12:37:46'),
-(2, 'nerajnerajlal@gmail.com', 'Html', 'Expert', 'html online course', '2025-03-28 12:37:46');
+(1, 'nerajnerajlal@gmail.com', 'Java', 'Advanced', 'java full stack', '2025-03-28 07:07:46'),
+(2, 'nerajnerajlal@gmail.com', 'Html', 'Expert', 'html online course', '2025-03-28 07:07:46');
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
