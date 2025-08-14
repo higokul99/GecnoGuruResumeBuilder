@@ -439,21 +439,21 @@
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div class="pricing-header">
-                        <h3 class="pricing-title">Resume Building & Optimization</h3>
-                        <p class="pricing-subtitle">ATS-friendly professional resume</p>
-                        <p class="pricing-price"><span class="price-range">₹99 – ₹2,499</span></p>
+                        <h3 class="pricing-title">Pro Plan</h3>
+                        <p class="pricing-subtitle">Unlock all premium features</p>
+                        <p class="pricing-price"><span class="price-range">₹10</span></p>
                     </div>
                     <div class="pricing-features">
                         <ul class="feature-list">
-                            <li class="feature-item"><i class="fas fa-check"></i> Professional template selection</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> ATS optimization</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Industry-specific keywords</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Achievement-focused content</li>
-                            <li class="feature-item"><i class="fas fa-check"></i> Multiple formats (PDF, DOCX)</li>
+                            <li class="feature-item"><i class="fas fa-check"></i> Access to all resume templates</li>
+                            <li class="feature-item"><i class="fas fa-check"></i> Unlimited resume downloads</li>
+                            <li class="feature-item"><i class="fas fa-check"></i> Cover letter builder</li>
+                            <li class="feature-item"><i class="fas fa-check"></i> Priority support</li>
+                            <li class="feature-item"><i class="fas fa-check"></i> No watermarks</li>
                         </ul>
                     </div>
                     <div class="pricing-footer">
-                        <a href="login.php" class="pricing-btn">Get Started</a>
+                        <a href="subscribe.php" class="pricing-btn">Get Started</a>
                     </div>
                 </div>
                 
