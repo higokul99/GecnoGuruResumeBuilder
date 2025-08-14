@@ -2,10 +2,17 @@
 <?php
 include('dbconnect.php');
 
-if (!isset($_SESSION)) {
-    if (!isset($_SESSION)) {
+// Start session with secure settings
+if (session_status() === PHP_SESSION_NONE) {
+    session_set_cookie_params([
+        'lifetime' => 86400, // 1 day
+        'path' => '/',
+        'domain' => '', // Set your domain here if needed
+        'secure' => isset($_SERVER['HTTPS']), // Only send over HTTPS
+        'httponly' => true, // Prevent JavaScript access
+        'samesite' => 'Lax'
+    ]);
     session_start();
-}
 }
 
 function sanitizeInput($data) {
@@ -60,11 +67,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         
         // Hash password
-        // $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         
         // Insert new user
         $stmt = $conn->prepare("INSERT INTO users (email, password) VALUES (?, ?)");
-        $stmt->bind_param("ss", $email, $password);
+        $stmt->bind_param("ss", $email, $hashed_password);
         
         if ($stmt->execute()) {
             $_SESSION['success'] = "Registration successful! Please login.";
@@ -88,20 +95,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         
         // Get user from database
-        $stmt = $conn->prepare("SELECT id, email, password FROM users WHERE email = ? AND password = ?");
-        $stmt->bind_param("ss", $email, $password);
+        $stmt = $conn->prepare("SELECT id, email, password FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
         
         if ($result->num_rows === 1) {
             $user = $result->fetch_assoc();
             
-            // Login successful
-            $_SESSION['user_id'] = $user['id'];
-            $_SESSION['email'] = $user['email'];
-            
-            header("Location: index1.php");
-            exit();
+            // Verify password
+            if (password_verify($password, $user['password'])) {
+                // Regenerate session ID to prevent session fixation
+                session_regenerate_id(true);
+
+                // Login successful
+                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['email'] = $user['email'];
+
+                header("Location: index1.php");
+                exit();
+            } else {
+                $_SESSION['error'] = "Invalid email or password!";
+                header("Location: login.php");
+                exit();
+            }
         } else {
             $_SESSION['error'] = "Invalid email or password!";
             header("Location: login.php");

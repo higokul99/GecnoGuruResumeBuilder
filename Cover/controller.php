@@ -1,23 +1,32 @@
 <?php
 // controller.php
-if (!isset($_SESSION)) {
-    if (!isset($_SESSION)) {
-    session_start();
-}
-}
 include 'dbconnect.php';
 
-// Initialize database connection
-$conn = new mysqli($host, $user, $pass, $dbname);
+// Start session with secure settings
+if (session_status() === PHP_SESSION_NONE) {
+    session_set_cookie_params([
+        'lifetime' => 86400, // 1 day
+        'path' => '/',
+        'domain' => '', // Set your domain here if needed
+        'secure' => isset($_SERVER['HTTPS']), // Only send over HTTPS
+        'httponly' => true, // Prevent JavaScript access
+        'samesite' => 'Lax'
+    ]);
+    session_start();
+}
 
-// Check database connection
-if ($conn->connect_error) {
-    die("Database connection failed: " . $conn->connect_error);
+// Redirect if user is not logged in
+if (!isset($_SESSION['email'])) {
+    header("Location: ../login.php");
+    exit();
 }
 
 // Function to sanitize input data
 function sanitizeInput($data) {
-    return htmlspecialchars(stripslashes(trim($data)));
+    global $conn;
+    $data = trim($data);
+    $data = htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
+    return $conn->real_escape_string($data);
 }
 
 // Handle Personal Details Form Submission
@@ -79,7 +88,8 @@ if (isset($_POST['submit_personal_details'])) {
     if ($stmt->execute()) {
         $_SESSION['success_message'] = "Personal details saved successfully!";
     } else {
-        $_SESSION['error_message'] = "Error saving personal details: " . $conn->error;
+        error_log("Error saving cover letter personal details: " . $stmt->error);
+        $_SESSION['error_message'] = "An error occurred while saving personal details.";
     }
 
     $stmt->close();
@@ -135,7 +145,8 @@ if (isset($_POST['submit_profesional_details'])) {
     if ($stmt->execute()) {
         $_SESSION['success_message'] = "Professional details saved successfully!";
     } else {
-        $_SESSION['error_message'] = "Error saving professional details: " . $conn->error;
+        error_log("Error saving cover letter professional details: " . $stmt->error);
+        $_SESSION['error_message'] = "An error occurred while saving professional details.";
     }
 
     $stmt->close();
@@ -213,7 +224,8 @@ if (isset($_POST['submit_company_letter'])) {
         $_SESSION['success_message'] = "Cover letter generated successfully!";
         header("Location: preview.php");
     } else {
-        $_SESSION['error_message'] = "Error generating cover letter: " . $conn->error;
+        error_log("Error generating cover letter: " . $stmt->error);
+        $_SESSION['error_message'] = "An error occurred while generating the cover letter.";
         header("Location: specifics.php");
     }
 

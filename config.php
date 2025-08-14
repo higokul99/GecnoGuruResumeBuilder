@@ -1,10 +1,22 @@
 <?php
+require_once 'vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+// Error Reporting
+if (isset($_ENV['APP_ENV']) && $_ENV['APP_ENV'] === 'production') {
+    error_reporting(0);
+    ini_set('display_errors', 0);
+} else {
+    error_reporting(E_ALL);
+    ini_set('display_errors', 1);
+}
 
 // PhonePe API Credentials
-// Replace with your actual credentials
-define('PHONEPE_MERCHANT_ID', 'YOUR_MERCHANT_ID');
-define('PHONEPE_CLIENT_ID', 'YOUR_CLIENT_ID'); // This is the Salt Key
-define('PHONEPE_CLIENT_SECRET', 'YOUR_CLIENT_SECRET'); // This is the Salt Secret
+define('PHONEPE_MERCHANT_ID', $_ENV['PHONEPE_MERCHANT_ID'] ?? 'YOUR_MERCHANT_ID');
+define('PHONEPE_CLIENT_ID', $_ENV['PHONEPE_CLIENT_ID'] ?? 'YOUR_CLIENT_ID'); // This is the Salt Key
+define('PHONEPE_CLIENT_SECRET', $_ENV['PHONEPE_CLIENT_SECRET'] ?? 'YOUR_CLIENT_SECRET'); // This is the Salt Secret
 define('PHONEPE_CLIENT_VERSION', 'v1'); // Or your specific version
 
 // Environment: 'PRODUCTION' or 'UAT'

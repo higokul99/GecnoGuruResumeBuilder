@@ -2,33 +2,26 @@
 // Include database connection
 include 'dbconnect.php';
 
-// Start session
-if (!isset($_SESSION)) {
-    if (!isset($_SESSION)) {
+// Start session if not already started
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-}
 
-// Set default user email (you might want to replace this with actual session management)
-$user_email = 'neraj@gmail.com';
+// Redirect if user is not logged in
+if (!isset($_SESSION['email'])) {
+    header("Location: ../login.php");
+    exit();
+}
+$user_email = $_SESSION['email'];
 
 // Function to sanitize input
 function sanitize_input($data) {
+    global $conn;
     $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-
-// Function to handle database connection
-function create_db_connection() {
-    $conn = new mysqli('localhost', 'root', '', 'resume_builder');
-    
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    
-    return $conn;
+    $data = htmlspecialchars($data, ENT_QUOTES, 'UTF-8');
+    // Use real_escape_string as a fallback if not using prepared statements,
+    // but prepared statements are preferred and used here.
+    return $conn->real_escape_string($data);
 }
 
 // Handle Personal Details Form Submission
@@ -48,9 +41,6 @@ if(isset($_POST['submit_personal_details'])) {
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             throw new Exception("Invalid email format");
         }
-
-        // Create database connection
-        $conn = create_db_connection();
 
         // Check if user already exists
         $check_stmt = $conn->prepare("SELECT id FROM personal_details WHERE email = ?");
@@ -91,17 +81,17 @@ if(isset($_POST['submit_personal_details'])) {
                 window.location.href = 'education.php';
             </script>";
         } else {
-            throw new Exception("Error saving details: " . $stmt->error);
+            error_log("Error saving personal details: " . $stmt->error);
+            throw new Exception("Could not save personal details.");
         }
 
-        // Close statement and connection
+        // Close statement
         $stmt->close();
-        $conn->close();
 
     } catch (Exception $e) {
         // Handle exceptions
         echo "<script>
-            alert('" . $e->getMessage() . "');
+            alert('An error occurred. Please try again.');
             window.history.back();
         </script>";
         exit();
@@ -163,17 +153,18 @@ if(isset($_POST['submit_education_details'])) {
                 window.location.href = 'experience.php';
             </script>";
         } else {
-            throw new Exception("Error saving education details: " . $stmt->error);
+            error_log("Error saving education details: " . $stmt->error);
+            throw new Exception("Could not save education details.");
         }
 
-        // Close statement and connection
+        // Close statement
         $stmt->close();
-        $conn->close();
 
     } catch (Exception $e) {
         // Handle exceptions
+        error_log("Education Details Error: " . $e->getMessage());
         echo "<script>
-            alert('" . $e->getMessage() . "');
+            alert('An error occurred while saving education details.');
             window.history.back();
         </script>";
         exit();
@@ -188,9 +179,6 @@ if(isset($_POST['submit_experience_details'])) {
         if (!isset($_SESSION['user_email'])) {
             throw new Exception("Please complete personal details first");
         }
-
-        // Create database connection
-        $conn = create_db_connection();
 
         // Prepare SQL statement
         $stmt = $conn->prepare("INSERT INTO experience_details 
@@ -259,20 +247,20 @@ if(isset($_POST['submit_experience_details'])) {
                 window.location.href = 'projects.php';
             </script>";
         } else {
-            throw new Exception("Error saving experience details: " . $stmt->error);
+            error_log("Error saving experience details: " . $stmt->error);
+            throw new Exception("Could not save experience details.");
         }
 
-        // Close statement and connection
+        // Close statement
         $stmt->close();
-        $conn->close();
 
     } catch (Exception $e) {
         // Handle exceptions
+        error_log("Experience Details Error: " . $e->getMessage());
         echo "<script>
-            alert('" . $e->getMessage() . "');
+            alert('An error occurred while saving experience details.');
             window.history.back();
         </script>";
-        error_log($e->getMessage());
         exit();
     }
 }
@@ -290,9 +278,6 @@ if(isset($_POST['submit_projects_details'])) {
         if (!isset($_SESSION['user_email'])) {
             throw new Exception("Please complete personal details first");
         }
-
-        // Create database connection
-        $conn = create_db_connection();
 
         // Prepare SQL statement
         $stmt = $conn->prepare("INSERT INTO projects_details 
@@ -348,20 +333,20 @@ if(isset($_POST['submit_projects_details'])) {
                 window.location.href = 'hobbies.php';
             </script>";
         } else {
-            throw new Exception("Error saving project details: " . $stmt->error);
+            error_log("Error saving project details: " . $stmt->error);
+            throw new Exception("Could not save project details.");
         }
 
-        // Close statement and connection
+        // Close statement
         $stmt->close();
-        $conn->close();
 
     } catch (Exception $e) {
         // Handle exceptions
+        error_log("Projects Details Error: " . $e->getMessage());
         echo "<script>
-            alert('" . $e->getMessage() . "');
+            alert('An error occurred while saving project details.');
             window.history.back();
         </script>";
-        error_log($e->getMessage());
         exit();
     }
 }
@@ -377,9 +362,6 @@ if(isset($_POST['submit_hobbies_details'])) {
         if (!isset($_SESSION['user_email'])) {
             throw new Exception("Please complete personal details first");
         }
-
-        // Create database connection
-        $conn = create_db_connection();
 
         // Prepare SQL statement
         $stmt = $conn->prepare("INSERT INTO hobbies_details 
@@ -424,20 +406,20 @@ if(isset($_POST['submit_hobbies_details'])) {
                 window.location.href = 'skills.php';
             </script>";
         } else {
-            throw new Exception("Error saving hobbies details: " . $stmt->error);
+            error_log("Error saving hobbies details: " . $stmt->error);
+            throw new Exception("Could not save hobbies details.");
         }
 
-        // Close statement and connection
+        // Close statement
         $stmt->close();
-        $conn->close();
 
     } catch (Exception $e) {
         // Handle exceptions
+        error_log("Hobbies Details Error: " . $e->getMessage());
         echo "<script>
-            alert('" . $e->getMessage() . "');
+            alert('An error occurred while saving hobbies details.');
             window.history.back();
         </script>";
-        error_log($e->getMessage());
         exit();
     }
 }
@@ -452,9 +434,6 @@ if(isset($_POST['submit_skills_details'])) {
         if (!isset($_SESSION['user_email'])) {
             throw new Exception("Please complete personal details first");
         }
-
-        // Create database connection
-        $conn = create_db_connection();
 
         // Prepare SQL statement
         $stmt = $conn->prepare("INSERT INTO user_skills 
@@ -502,20 +481,20 @@ if(isset($_POST['submit_skills_details'])) {
                 window.location.href = 'achievements.php';
             </script>";
         } else {
-            throw new Exception("Error saving skills details: " . $stmt->error);
+            error_log("Error saving skills details: " . $stmt->error);
+            throw new Exception("Could not save skills details.");
         }
 
-        // Close statement and connection
+        // Close statement
         $stmt->close();
-        $conn->close();
 
     } catch (Exception $e) {
         // Handle exceptions
+        error_log("Skills Details Error: " . $e->getMessage());
         echo "<script>
-            alert('" . $e->getMessage() . "');
+            alert('An error occurred while saving skills details.');
             window.history.back();
         </script>";
-        error_log($e->getMessage());
         exit();
     }
 }
@@ -532,9 +511,6 @@ if(isset($_POST['submit_achievement_details'])) {
         if (!isset($_SESSION['user_email'])) {
             throw new Exception("Please complete personal details first");
         }
-
-        // Create database connection
-        $conn = create_db_connection();
 
         // Prepare SQL statement
         $stmt = $conn->prepare("INSERT INTO user_achievements 
@@ -585,20 +561,20 @@ if(isset($_POST['submit_achievement_details'])) {
                 window.location.href = 'resume.php';
             </script>";
         } else {
-            throw new Exception("Error saving achievement details: " . $stmt->error);
+            error_log("Error saving achievement details: " . $stmt->error);
+            throw new Exception("Could not save achievement details.");
         }
 
-        // Close statement and connection
+        // Close statement
         $stmt->close();
-        $conn->close();
 
     } catch (Exception $e) {
         // Handle exceptions
+        error_log("Achievement Details Error: " . $e->getMessage());
         echo "<script>
-            alert('" . $e->getMessage() . "');
+            alert('An error occurred while saving achievement details.');
             window.history.back();
         </script>";
-        error_log($e->getMessage());
         exit();
     }
 }
